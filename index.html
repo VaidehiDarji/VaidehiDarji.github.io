@@ -91,10 +91,6 @@
     FB.getLoginStatus(function(response) {
     statusChangeCallback(response);
   });
-  
-   FB.Event.subscribe('auth.login', function () {
-          window.location = "/graph.html";
-      });
   };
 
   (function(d, s, id){
@@ -104,6 +100,10 @@
      js.src = "//connect.facebook.net/en_US/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
+   
+   FB.Event.subscribe('auth.login', function () {
+          window.location = "/graph.html";
+      });
    
    function testAPI() {
     console.log('Welcome!  Fetching your information.... ');
