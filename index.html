@@ -58,6 +58,7 @@
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
       testAPI();
+      console.log(response.authResponse.accessToken);
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
       document.getElementById('status').innerHTML = 'Please log ' +
@@ -120,7 +121,7 @@
 <div class="container-fluid bg-1 text-center">
   
   <img src="http://static02.mediaite.com/themarysue/uploads/2015/11/facebook_like_thumb.jpg" class="img-responsive img-circle margin" style="display:inline" alt="Bird" width="300" height="300">
- <h3><fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+ <h3><fb:login-button scope="public_profile,email,user_friends,user_likes" onlogin="checkLoginState();">
 </fb:login-button>
 
   <div id="status">
