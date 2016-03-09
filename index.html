@@ -82,13 +82,19 @@
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '428194350712444',
+      cookie     : true,
       xfbml      : true,
-      version    : 'v2.5'
+      version    : 'v2.5',
+      ststus     : true
     });
     
     FB.getLoginStatus(function(response) {
     statusChangeCallback(response);
   });
+  
+   FB.Event.subscribe('auth.login', function () {
+          window.location = "http://example.com";
+      });
   };
 
   (function(d, s, id){
