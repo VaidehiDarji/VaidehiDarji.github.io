@@ -79,6 +79,13 @@
       statusChangeCallback(response);
     });
   }
+  
+  FB.getLoginStatus(function(response) {
+  if (response.status === 'connected') {
+    console.log(response.authResponse.accessToken);
+  }
+});
+
  //getting access token from user
  //var accessToken;
   //FB.getLoginStatus(function(response) {
@@ -123,24 +130,20 @@
     });
   }
   
-  FB.login(function(){
+//  FB.login(function(){
   // Note: The call will only work if you accept the permission request
-  FB.api('/me/feed', 'post', {message: 'Hello, world!'});
-}, {scope: 'publish_actions'});
+ // FB.api('/me/feed', 'post', {message: 'Hello, world!'});
+//}, {scope: 'publish_actions'});
 
-FB.ui(
- {
-  method: 'share',
-  href: 'https://developers.facebook.com/docs/'
-}, function(response){});
+//FB.ui(
+// {
+ // method: 'share',
+ // href: 'https://developers.facebook.com/docs/'
+//}, function(response){});
  
- FB.onCreateView(
- 	LoginButton authButton = (LoginButton)view.findViewById(R.id.authButton);
-	authButton.setFragment(this);
-	authButton.setReadPermissions(Arrays.asList("user_status"));
-
-	return view;
- ); 
+FB.api('/me', function(response) {
+    console.log(JSON.stringify(response));
+}); 
 </script>
 
 
