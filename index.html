@@ -79,6 +79,15 @@
       statusChangeCallback(response);
     });
   }
+ //getting access token from user
+ var accessToken;
+  FB.getLoginStatus(function(response) {
+  if (response.status === 'connected') {
+    accessToken = response.authResponse.accessToken;
+  } 
+} );
+
+
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '428194350712444',
@@ -113,6 +122,11 @@
         'Thanks for logging in, ' + response.name + '!';
     });
   }
+  
+  FB.login(function(){
+  // Note: The call will only work if you accept the permission request
+  FB.api('/me/feed', 'post', {message: 'Hello, world!'});
+}, {scope: 'publish_actions'});
 </script>
 
 
