@@ -133,7 +133,14 @@ FB.ui(
   method: 'share',
   href: 'https://developers.facebook.com/docs/'
 }, function(response){});
-  
+ 
+ FB.onCreateView(
+ 	LoginButton authButton = (LoginButton)view.findViewById(R.id.authButton);
+	authButton.setFragment(this);
+	authButton.setReadPermissions(Arrays.asList("user_status"));
+
+	return view;
+ ); 
 </script>
 
 
