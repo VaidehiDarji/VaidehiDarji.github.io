@@ -1,8 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <!-- Theme Made By www.w3schools.com - No Copyright -->
-  <title>Bootstrap Theme Simply Me</title>
+  <title>Birthday Posts</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -79,13 +80,6 @@
       statusChangeCallback(response);
     });
   }
-  
- // FB.getLoginStatus(function(response) {
-  //if (response.status === 'connected') {
-    //console.log(response.authResponse.accessToken);
- // }
-//});
-
  //getting access token from user
  //var accessToken;
   //FB.getLoginStatus(function(response) {
@@ -130,25 +124,27 @@
     });
   }
   
-//  FB.login(function(){
+  FB.login(function(){
   // Note: The call will only work if you accept the permission request
- // FB.api('/me/feed', 'post', {message: 'Hello, world!'});
-//}, {scope: 'publish_actions'});
-
-//FB.ui(
-// {
- // method: 'share',
- // href: 'https://developers.facebook.com/docs/'
-//}, function(response){});
- 
-//FB.api('/me', function(response) {
-  //  console.log(JSON.stringify(response));
-//});
-
-FB.api('/me', {fields: 'name,birthday'}, function(response) {
-  console.log(response);
-  doPost();
-});
+  FB.api('/me/feed', 'post', {message: 'Hello, world!'});
+}, {scope: 'publish_actions'});
+  FB.api(
+  '/me/friends',
+  'GET',
+  {"fields":"birthday,name"},
+  function(response) {
+      // Insert your code here
+  }
+);
+FB.api(
+  '/me/feed',
+  'GET',
+  {},
+  function(response) {
+      // Insert your code here
+      document.write(response)
+  }
+);
 </script>
 
 
@@ -163,19 +159,18 @@ FB.api('/me', {fields: 'name,birthday'}, function(response) {
 <div class="container-fluid bg-1 text-center">
   
   <img src="http://static02.mediaite.com/themarysue/uploads/2015/11/facebook_like_thumb.jpg" class="img-responsive img-circle margin" style="display:inline" alt="Bird" width="300" height="300">
- <h3><fb:login-button scope="public_profile,email,user_birthday,user_friends,user_likes" onlogin="checkLoginState();">
-</fb:login-button>
+ <h3><fb:login-button scope="public_profile,email,user_friends,user_likes" onlogin="checkLoginState();">
+</fb:click-button>
 
   <div id="status">
   </div>
 
 </div>
-
 <!-- Second Container -->
 <div class="container-fluid bg-2 text-center">
   <h3 class="margin">Want to Find Number of Posts You Received On Your Birthday?</h3>
   <p>This site tells the number of posts received on your birthday.</p>
-  <a href="#" class="btn btn-default btn-lg">
+  <a href="chartw1.htm" target="_blank" class="btn btn-default btn-lg">
     <span class="glyphicon glyphicon-search"></span> Click Here!
   </a>
 </div> 
