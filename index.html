@@ -138,7 +138,11 @@ FB.api(
   {},
   function(response) {
       // Insert your code here
-      document.write(response);
+       if (!response || response.error) {
+    alert('Error occured');
+  } else {
+    alert('Post ID: ' + response.id);
+  }
   }
 );
 }, {scope: 'publish_actions'});
