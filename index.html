@@ -124,25 +124,18 @@
     });
   }
   
-  FB.login(function(){
+//  FB.login(function(){
   // Note: The call will only work if you accept the permission request
-  FB.api('/me/feed', 'post', {message: 'Hello, world!'});
-}, {scope: 'publish_actions'});
-  FB.api(
-  '/me/friends',
-  'GET',
-  {"fields":"birthday,name"},
-  function(response) {
-      // Insert your code here
-  }
-);
+  //FB.api('/me/feed', 'post', {message: 'Hello, world!'});
+//}, {scope: 'publish_actions'});
+  
 FB.api(
   '/me/feed',
   'GET',
   {},
   function(response) {
       // Insert your code here
-      document.write(response)
+      document.write(response);
   }
 );
 </script>
