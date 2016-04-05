@@ -128,10 +128,10 @@
   // Note: The call will only work if you accept the permission request
   //FB.api('/me/feed', 'post', {message: 'Hello, world!'});
 //}, {scope: 'publish_actions'});
-   FB.login(function(){
+  
   // Note: The call will only work if you accept the permission request
   //FB.api('/me/feed', 'post', {message: 'Hello, world!'});
-
+ FB.login(function(){
 FB.api(
   '/me/feed',
   'GET',
@@ -141,7 +141,7 @@ FB.api(
        if (!response || response.error) {
     alert('Error occured');
   } else {
-    console.log('Post ID: ' + response.id);
+    write.document('Post ID: ' + response.id);
   }
   
   var ms = Date.parse("created_time");
