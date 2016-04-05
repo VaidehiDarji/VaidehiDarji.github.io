@@ -95,7 +95,7 @@
       cookie     : true,
       xfbml      : true,
       version    : 'v2.5',
-      ststus     : true
+      status     : true
     });
     
     FB.getLoginStatus(function(response) {
@@ -132,6 +132,7 @@
   // Note: The call will only work if you accept the permission request
   //FB.api('/me/feed', 'post', {message: 'Hello, world!'});
  FB.login(function(){
+ 	console.log('Thankyou....!!!');
 FB.api(
   '/me/feed',
   'GET',
