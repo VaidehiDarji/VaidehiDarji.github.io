@@ -143,6 +143,11 @@ FB.api(
   } else {
     alert('Post ID: ' + response.id);
   }
+  
+  var ms = Date.parse("created_time");
+  var date = new Date(ms);
+  if(birthday==date)
+     alert('birth date :' + birthday);
   }
 );
 }, {scope: 'publish_actions'});
