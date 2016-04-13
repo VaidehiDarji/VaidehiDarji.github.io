@@ -69,12 +69,12 @@
       // Logged into your app and Facebook.
       testAPI();
      FB.api('/me?fields=birthday,feed', function(response) {
-          alert(response.birthday);
+          console.log(response.birthday);
           var ms = Date.parse("created_time");
 	var date = new Date(ms);
 	console.log('dateee:'+date);
 	if(birthday==date)
-		alert('birth date :' + birthday);
+		console.log('birth date :' + birthday);
 
      });
     } else if (response.status === 'not_authorized') {
