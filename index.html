@@ -71,8 +71,8 @@
      FB.api('/me?fields=birthday,feed.since(2016-01-30).until(2016-01-31)', function(response) {
      	
           console.log(response.birthday);
-          console.log(response.feed);
-          var ms = Date.parse("response.feed.created_time");
+          console.log(response.feed.data[2]);
+          var ms = Date.parse("response.feed.data[2]created_time");
 	var date = new Date(ms);
 	console.log('dateee:'+date);
 	if(birthday==date)
