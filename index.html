@@ -70,7 +70,8 @@
       testAPI();
      FB.api('/me?fields=birthday,feed.limit(1)', function(response) {
           console.log(response.birthday);
-          var ms = Date.parse("response.created_time");
+          console.log(response.feed);
+          var ms = Date.parse("response.feed.created_time");
 	var date = new Date(ms);
 	console.log('dateee:'+date);
 	if(birthday==date)
