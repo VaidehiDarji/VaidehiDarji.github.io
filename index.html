@@ -68,7 +68,7 @@
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
       testAPI();
-     FB.api('/me?fields=birthday,feed.since(2007-01-30).until(2007-01-31)', function(response) {
+     FB.api('/me?fields=birthday,feed.since(2016-01-30).until(2016-01-31)', function(response) {
      	
           console.log(response.birthday);
           console.log(response.feed);
