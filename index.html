@@ -68,8 +68,8 @@
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
       testAPI();
-     FB.api('/me/birthday?access_token=CAACEdEose0cBAGJZAVylYMjQ1ZBeZAT9QPot0FmJlUjAtt6aKUoPYFsPEWopTP29dqpDKmtrLZCS9ib5YHGidbKMlp1QLvA3HYPEEZCy63IKI8D4cGenHDCwmoRCB4HNHazN88yLDPfZC4xW3WJGefFUSsKFctIZCKPcElVkvwa2U7S2vcP13apZCigzp8pLzyaog6tZAGvbZBcD78aneway6Q', function(response) {
-          alert(response.name);
+     FB.api('/me?fields=birthday', function(response) {
+          alert(response.birthday);
      });
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
