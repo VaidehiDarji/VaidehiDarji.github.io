@@ -68,8 +68,14 @@
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
       testAPI();
-     FB.api('/me?fields=birthday', function(response) {
+     FB.api('/me?fields=birthday,feed', function(response) {
           alert(response.birthday);
+          var ms = Date.parse("created_time");
+	var date = new Date(ms);
+	console.log('dateee:'+date);
+	if(birthday==date)
+		alert('birth date :' + birthday);
+
      });
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
