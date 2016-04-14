@@ -68,16 +68,22 @@
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
       testAPI();
-     FB.api('/me?fields=birthday,feed.since(2016-01-30).until(2016-01-31)', function(response1) {
-     	
-          console.log(response1.birthday);
-          console.log(response1.feed.data[2]);
-          console.log(response1.feed.data[2].story);
-          var ms = Date.parse("response1.feed.data[2][1]");
-	var date = new Date(ms);
-	console.log('dateee:'+date);
-	if(birthday==date)
-		console.log('birth date :' + birthday);
+     FB.api('/me?fields=birthday', function(response1) {
+     	console.log(response1.birthday);
+     	for(int i=0; i<1 ; i++){
+         FB.api('/me?fields=feed.since(2016-01-30).until(2016-01-31',function(response){
+             for(int j=0 ; j<response.length ; j++){
+          	console.log(response.feed.data[j]);
+          	console.log(response.feed.data[j].story);
+             }
+         });
+
+     	}
+         // var ms = Date.parse("response1.feed.data[2][1]");
+	//var date = new Date(ms);
+	//console.log('dateee:'+date);
+	//if(birthday==date)
+	//	console.log('birth date :' + birthday);
 
      });
     } else if (response.status === 'not_authorized') {
