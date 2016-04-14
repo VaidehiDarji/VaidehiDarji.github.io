@@ -75,8 +75,8 @@
          FB.api('/me?fields=feed.since(2016-01-30).until(2016-01-31)',function(response2){
          	console.log(response2.feed.data);
              for(j=0 ; j<response2.data.length ; j++){
-          	console.log(response2.data[j]);
-          	console.log(response2.data[j].story);
+          	console.log(response2.feed.data[j]);
+          	console.log(response2.feed.data[j].story);
              }
          });
 
