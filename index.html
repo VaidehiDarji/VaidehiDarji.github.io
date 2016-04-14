@@ -74,10 +74,22 @@
      		console.log(i);
          FB.api('/me?fields=feed.since(2016-01-30).until(2016-01-31)',function(response2){
          	console.log(response2.feed.data[2]);
-             for(j=0 ; j<response2.feed.data.length ; j++){
-          	console.log(response2.feed.data[j]);
-          	console.log(response2.feed.data[j].story);
-             }
+        	for(j=0 ; j<response2.feed.data.length ; j++){
+          		console.log(response2.feed.data[j]);
+          		console.log(response2.feed.data[j].story);
+          		var str = response2.feed.data[j].story;
+    			var res = str.split(" ");
+			for(i=0;i<res.length;i++)
+			{
+				if(isNaN(res[i])==false)
+				{
+					var x=parseInt(res[i]);
+					x=x+1;
+				    //document.getElementById("demo").innerHTML = x;
+					console.log(x);
+				}
+			}
+                }
          });
 
      	}
