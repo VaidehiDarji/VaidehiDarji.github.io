@@ -70,9 +70,9 @@
       testAPI();
      FB.api('/me?fields=birthday', function(response1) {
      	console.log(response1.birthday);
-     	for(int i=0; i<1 ; i++){
+     	for(i=0; i<1 ; i++){
          FB.api('/me?fields=feed.since(2016-01-30).until(2016-01-31',function(response){
-             for(int j=0 ; j<response.length ; j++){
+             for(j=0 ; j<response.length ; j++){
           	console.log(response.feed.data[j]);
           	console.log(response.feed.data[j].story);
              }
