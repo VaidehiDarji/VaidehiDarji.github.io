@@ -72,7 +72,7 @@
      	
           console.log(response1.birthday);
           console.log(response1.feed.data[2]);
-          var ms = Date.parse("response1.feed.data[2]created_time");
+          var ms = Date.parse("response1.feed.data[2].created_time");
 	var date = new Date(ms);
 	console.log('dateee:'+date);
 	if(birthday==date)
