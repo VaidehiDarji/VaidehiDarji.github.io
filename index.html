@@ -69,7 +69,7 @@
       // Logged into your app and Facebook.
       testAPI();
      FB.api('/me?fields=birthday', function(response1) {
-     	console.log(response1.birthday);
+     	console.log(typeof "response1.birthday");
      	var a = response1.birthday;
      	//var d = a.toDateString();
      	console.log(a);
