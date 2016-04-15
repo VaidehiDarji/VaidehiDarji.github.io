@@ -70,8 +70,12 @@
       testAPI();
      FB.api('/me?fields=birthday', function(response1) {
      	console.log(typeof "response1.birthday");
-     	var ab = new Date(response1.birthday);
-     	var a= ab.format("yyyy/mm/dd");
+     	var dateFieldValue = new Date(response1.birthday);
+     	var year = dateFieldValue.getFullYear();
+	var month = dateFieldValue.getMonth();
+	var day = dateFieldValue.getDate();
+	var a = new Date(year,month,day);
+     	//var a= ab.format("yyyy/mm/dd");
      	//var d = a.toDateString();
      	console.log(a);
      	for(i=0; i<1 ; i++){
