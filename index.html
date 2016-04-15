@@ -72,7 +72,7 @@
      	console.log(response1.birthday);
      	for(i=0; i<1 ; i++){
      		console.log(i);
-         FB.api('/me?fields=feed.since(2016-01-30).until(2016-01-31)',function(response2){
+         FB.api('/me?fields=feed.since(response1.birthday).until(2016-01-31)',function(response2){
          	//console.log(response2.feed.data[2]);
          	var x=0;
         	for(j=0 ; j<response2.feed.data.length ; j++){
