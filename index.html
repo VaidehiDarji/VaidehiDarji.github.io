@@ -71,7 +71,12 @@
      	console.log(response1.birthday);
        // var da = Date.parse(response1.birthday);
         //var d = new Date(da);
-        var a = dateFormat(response1.birthday, "yyyy-mm-dd");
+        var date = response1.birthday
+        var day = date.getDate(); //Date of the month: 2 in our example
+va	var month = date.getMonth(); //Month of the Year: 0-based index, so 1 in our example
+va	var year = date.getFullYear() //Year: 2013
+        
+       // var a = dateFormat(response1.birthday, "yyyy-mm-dd");
          //var p = a.split("/");
          //console.log(p[0]);
          //var d = new Date("00",p[1],p[2]);
@@ -82,7 +87,7 @@
      	//console.log(typeof "d");
      	for(i=0; i<1 ; i++){
      		console.log(i);
-         FB.api('/me','GET',{"fields":"feed.until(2016-01-31).since(a)"},function(response2){
+         FB.api('/me','GET',{"fields":"feed.until(2016-01-31).since(year-month-date)"},function(response2){
          	//console.log(response2.feed.data[2]);
          	var x=0;
         	for(j=0 ; j<response2.feed.data.length ; j++){
@@ -183,7 +188,7 @@
     FB.api('/me', function(response) {
       console.log('Successful login for: ' + response.name);
       console.log(JSON.stringify(response));
-      document.getElementById('status').innerHTML =  'Thanks for logging in, ' + response.name + '!';
+      //document.getElementById('status').innerHTML =  'Thanks for logging in, ' + response.name + '!';
        
     });
   }
