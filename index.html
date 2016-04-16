@@ -69,12 +69,13 @@
       testAPI();
      FB.api('/me?fields=birthday', function(response1) {
      	console.log(typeof "response1.birthday");
-     	var d = new Date(response1.birthday);
+        var d = Date.parse(response.birthday);
+     //	var d = new Date(response1.birthday);
      //	var a =d.toLocaleDateString().replace(/\//g,'-');
      	//var a= ab.format("yyyy/mm/dd");
      	//var d = a.toDateString();
-     //	console.log(a);
-     //	console.log(typeof "a");
+        console.log(d);
+     	console.log(typeof "d");
      	for(i=0; i<1 ; i++){
      		console.log(i);
          FB.api('/me','GET',{"fields":"feed.until(2016-01-31).since(d)"},function(response2){
