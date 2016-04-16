@@ -71,7 +71,7 @@
      	console.log(response1.birthday);
        // var da = Date.parse(response1.birthday);
         //var d = new Date(da);
-        var date = response1.birthday
+        var date = new Date( response1.birthday );
         var day = date.getDate(); //Date of the month: 2 in our example
 	var month = date.getMonth(); //Month of the Year: 0-based index, so 1 in our example
 	var year = date.getFullYear() //Year: 2013
