@@ -5,18 +5,22 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta property="og:image"            content="http://static02.mediaite.com/themarysue/uploads/2015/11/facebook_like_thumb.jpg">
-<!--<meta property="og:image:secure_url" content="https://like.jpg">-->
 <meta property="og:image:type"       content="image/jpg">
 <meta property="og:image:width"      content="450">
 <meta property="og:image:height"     content="800">
 <meta property="og:title"  content="Birthday Posts">
-
-
+<meta property="og:url"  content="http://tharunarjun.github.io/">
+<meta property="og:type"   content="website" />
+<meta property="fb:app_id"  content="974830909219954">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta http-equiv="Expires" content="-1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	
+  <script src="Main1.js?n=1"></script>
+  <script src="chart.js?n=1"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>		
   <style>
   body {
       font: 20px Montserrat, sans-serif;
@@ -33,7 +37,11 @@
       background-color: #ffffff; 
       color: #3b5998;
   }
-  
+  .bg-3{
+height:500px;
+width:500px;
+background-color: #ffffff; 
+}
     .container-fluid {
       padding-top: 70px;
       padding-bottom: 70px;
@@ -51,172 +59,82 @@
       color: #1abc9c !important;
   }
   </style>
+  <script>
+  	$(function(){
+    $("#div2").hide();
+    $("#button").on("click", function(){
+        $("#div0, #div2").toggle();
+    });
+});
+  </script>
 </head>
 <body>
 <div id="fb-root"></div>
 <div id="fb-root"></div>
+
+<div class="container-fluid bg-3 text-center" id="div2">
+<canvas id="mycanvas" width="500" height="500"></canvas>
 <script>
-// This is called with the results from from FB.getLoginStatus().
-  function statusChangeCallback(response) {
-    console.log('statusChangeCallback');
-    console.log(response);
-    // The response object is returned with a status field that lets the
-    // app know the current login status of the person.
-    // Full docs on the response object can be found in the documentation
-    // for FB.getLoginStatus().
-    if (response.status === 'connected') {
-      // Logged into your app and Facebook.
-      testAPI();
-     FB.api('/me?fields=birthday', function(response1) {
-     	console.log(response1.birthday);
-       // var da = Date.parse(response1.birthday);
-        //var d = new Date(da);
-        var date = new Date( response1.birthday );
-        var day = date.getDate(); //Date of the month: 2 in our example
-	var month = date.getMonth(); //Month of the Year: 0-based index, so 1 in our example
-	var year = date.getFullYear() //Year: 2013
+var arr2=[];
+function some(arr1,arr3)
+{
+  arr2=arr1;
+  //console.log(arr2);
+//var arr2=[];
+//var re=|;
+//arr.split("|");
+var chart =document.getElementById("mycanvas").getContext("2d");
+//var arr=[20,50,70,40];
+console.log('arr2 in '+arr2);
+var data = {
+   // labels: ["2015", "2014", "2013", "2012", "2011", "2010"],
+    labels: arr3,
+    datasets: [
+        {
+            label: "My First dataset",
+            fillColor: "rgba(151,187,205,0.5)",
+            strokeColor: "rgba(151,187,205,0.8)",
+            highlightFill: "rgba(151,187,205,0.75)",
+            highlightStroke: "rgba(151,187,205,1)",
+            //data: [65, 59, 80, 81, 56, 55, 40]
+           data:arr2
+           
+        },
         
-       // var a = dateFormat(response1.birthday, "yyyy-mm-dd");
-         //var p = a.split("/");
-         //console.log(p[0]);
-         //var d = new Date("00",p[1],p[2]);
-     //	var a =d.toLocaleDateString().replace(/\//g,'-');
-     	//var a= ab.format("yyyy/mm/dd");
-     	//var d = a.toDateString();
-        //console.log(a);
-     	//console.log(typeof "d");
-     	for(i=0; i<1 ; i++){
-     		console.log(i);
-         FB.api('/me','GET',{"fields":"feed.until(2016-01-31).since(Date(year,month,date))"},function(response2){
-         	//console.log(response2.feed.data[2]);
-         	var x=0;
-        	for(j=0 ; j<response2.feed.data.length ; j++){
-        		console.log(response2.feed.data.length);
-          		console.log(response2.feed.data[j]);
-          		//console.log(response2.feed.data[j].story);
-          		if(response2.feed.data[j].story){
-          		var str = response2.feed.data[j].story;
-    			var res = str.split(" ");
-			for(i=0;i<res.length;i++)
-			{
-				if(isNaN(res[i])==false)
-				{
-					 var y=parseInt(res[i]);
-					x=y+x+1;
-				    //document.getElementById("demo").innerHTML = x;
-					console.log(x);
-				}
-			
-                	}
-          		}
-          		else{
-          			x++;
-          			console.log(x);
-          		}
-        	}
-         });
-
-     	}
-         // var ms = Date.parse("response1.feed.data[2][1]");
-	//var date = new Date(ms);
-	//console.log('dateee:'+date);
-	//if(birthday==date)
-	//	console.log('birth date :' + birthday);
-
-     });
-    } else if (response.status === 'not_authorized') {
-      // The person is logged into Facebook, but not your app.
-      document.getElementById('status').innerHTML = 'Please log into this app.';
-        
-    } else {
-      // The person is not logged into Facebook, so we're not sure if
-      // they are logged into this app or not.
-      document.getElementById('status').innerHTML = 'Please log into Facebook.';
-        
-    }
-  }
-
-  // This function is called when someone finishes with the Login
-  // Button.  See the onlogin handler attached to it in the sample
-  // code below.
-  function checkLoginState() {
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    });
-  }
-
-  window.fbAsyncInit = function() {
-  FB.init({
-    appId      : '428194350712444',
-    cookie     : true,  // enable cookies to allow the server to access 
-                        // the session
-    xfbml      : true,  // parse social plugins on this page
-    version    : 'v2.5' // use graph api version 2.5
-  });
-
-  // Now that we've initialized the JavaScript SDK, we call 
-  // FB.getLoginStatus().  This function gets the state of the
-  // person visiting this page and can return one of three states to
-  // the callback you provide.  They can be:
-  //
-  // 1. Logged into your app ('connected')
-  // 2. Logged into Facebook, but not your app ('not_authorized')
-  // 3. Not logged into Facebook and can't tell if they are logged into
-  //    your app or not.
-  //
-  // These three cases are handled in the callback function.
-
-  FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-  });
-
-  };
-
-  // Load the SDK asynchronously
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-
-  // Here we run a very simple test of the Graph API after login is
-  // successful.  See statusChangeCallback() for when this call is made.
-  function testAPI() {
-    console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me', function(response) {
-      console.log('Successful login for: ' + response.name);
-      console.log(JSON.stringify(response));
-      //document.getElementById('status').innerHTML =  'Thanks for logging in, ' + response.name + '!';
-       
-    });
-  }
+    ]
+};
+var myFirstChart=new Chart(chart).Bar(data);
+}
 </script>
-
-
+</div>
+<div id="div0">
 <!-- Navbar -->
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" id="nav">
   <div
   class="fb-like" data-share="true" data-width="450" data-show-faces="true"></div>
 <div id="response"></div>
 </nav>
 <!-- First Container -->
-<div class="container-fluid bg-1 text-center">
+<div class="container-fluid bg-1 text-center" id="div1">
   
-  
+  <iframe width="100%" height="400px" src="like.htm" name="iframe_a" style="border:none"></iframe>
  <fb:login-button scope="public_profile,email,user_posts,user_birthday" onlogin="checkLoginState();">
 </fb:login-button>
 
   
 </div>
 <!-- Second Container -->
-<div class="container-fluid bg-2 text-center">
+<div class="container-fluid bg-2 text-center" id="div3">
   <h3 class="margin">Want to Find Number of Posts You Received On Your Birthday?</h3>
   <p>This site tells the number of posts received on your birthday.</p>
-  
+ <!-- <a href="chartw1.htm" target="iframe_a" class="btn btn-default btn-lg">
     <span class="glyphicon glyphicon-search"></span> Click Here!
- 
+  </a>-->
+  <p class="btn btn-default btn-lg" id="button">
+    <span class="glyphicon glyphicon-search"></span> Click Here!
+  </p>
 </div> 
+</div>
+
 </body>
 </html>
