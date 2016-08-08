@@ -9,10 +9,13 @@ function statusChangeCallback(response) {
       // Logged into your app and Facebook.
       testAPI();
       var arr= [];
+      var arr1=[];
       var count=0;
+      var count1=0;
       FB.api('/me?fields=birthday', function(response1) {
    	console.log(response1.birthday);
-    var b=new Date(response1.birthday);
+    
+var b=new Date(response1.birthday);
 	   	var b1=new Date(response1.birthday);
 	   	//var e=new Date();
 	   	 var c=b1.getDate();
@@ -23,7 +26,9 @@ function statusChangeCallback(response) {
 //var m2=11;
 //var d2=10;
 var e = new Date();
-    var p = e.getFullYear();
+   
+    var da=e.toLocaleDateString();
+     var p = e.getFullYear();
     var y1=p;
     console.log(y1);
 var y2=2015;
@@ -33,13 +38,17 @@ var y2=2015;
 	var m2=b1.getMonth();
 	var d2=b1.getDate();
 	//var y2=e.getFullYear();
+     	var k=y1;
+     	var i=0;
+     	var j=0;
+     	
      	
 //var url='/me?fields=feed.since(1449532800).until(1449705600)';
-     	for(i=0; i<4 ; i++){
-     		console.log(i);
-   var date = new Date(Date.UTC(y1, m1, d1));
+     	for(k=y1; k>2011 ; k--){
+     		//console.log(i);
+   var date = new Date(Date.UTC(k, m1, d1));
 date=date.toLocaleDateString();
-var date1 = new Date(Date.UTC(y1, m2, d2));
+var date1 = new Date(Date.UTC(k, m2, d2));
 date1=date1.toLocaleDateString();
      //console.log(date);
      //console.log(date1);
@@ -50,8 +59,14 @@ date1=date1.toLocaleDateString();
         	//	console.log(response2.feed.data.length);
           	//	console.log(response2.feed.data[j]);
           		//console.log(response2.feed.data[j].story);
+          		var f=0;
           		if(response2.feed.data[j].story){
           		var str = response2.feed.data[j].story;
+          		var str1=response2.feed.data[j].created_time;
+          		var res1=str1.split("-");
+          		arr1[count1]=res1[0];
+          		count1++;
+          		console.log('yes'+response2.feed.data[j].story);
     			var res = str.split(" ");
     			var v=res.length;
 			for(i=0;i<v;i++)
@@ -64,21 +79,28 @@ date1=date1.toLocaleDateString();
 					count=count+1;
 				    //document.getElementById("demo").innerHTML = x;
 					console.log("yes "+x);
+					f=1;
 				}
+				
+				
+				
 			
                 	}
+                	console.log('f and k are  '+f+' '+k);
+                	if(f==0)
+                	{
+                		arr[count]=2;
+                		count++;
+                		console.log('Sir');
+                	}
           		}
-          	/*	else{
-          			x++;
-          			arr[count]=x;
-					count=count+1;
-          			console.log(x);
-          		}*/
+          		
         	}
         	console.log(arr);
-        	some(arr);
+        	some(arr,arr1)
          });
-	y1=y1-1;
+	//y1=y1-1;
+//	f=0;
      	}
          
      });
